@@ -1,7 +1,7 @@
 from random import randint as r
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-WORDS = ["AMITGHOSH", "KATIE", "KEVIN", "MEHUL"]
-DIM = 10
+WORDS = ["AMITGHOSH", "KATIE", "KEVIN", "MEHUL", "YUVI", "SHAUNAK"]
+DIM = 15
 
 X = []
 
@@ -49,7 +49,7 @@ def coord(word, vertical=False, diagonal=False):
     L = len(word)
     
     while True:
-        x, y = r(0, DIM - L), r(0, DIM - L)
+        x,y = r(0, DIM - L), r(0, DIM - L)
         
         check = len(word)
 
@@ -59,12 +59,12 @@ def coord(word, vertical=False, diagonal=False):
                     break
                 else:
                     check -= 1
-            elif diagonal:
+            if diagonal:
                 if X[x + COUNT][y + COUNT] != "-":
                     break
                 else:
                    check -= 1
-            else:
+            if not(diagonal or vertical):
                 if X[x][y + COUNT] != "-":
                     break
                 else:
@@ -90,7 +90,7 @@ def create():
             ver = True
 
         rev = [True, False][r(0,1)] #reverse
-        c = coord(i, vertical=ver)
+        c = coord(i, vertical=ver, diagonal=dia)
         add(c, i, vertical=ver, reverse=rev, diagonal=dia)
         print(c, i)
 
@@ -105,7 +105,9 @@ def ws():
         for ch in range(chs):
             if NEW[i][ch] == "-":
                 NEW[i][ch] = alpha[r(0,25)]
+                # NEW[i][ch] = "-"
 
     return NEW, WORDS
 
+ws()
 output()

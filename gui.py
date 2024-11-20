@@ -1,4 +1,4 @@
-# cd C:\Users\s2017073\Desktop\PROJECT\
+# cd C:\Users\s2017073\Desktop\"WORD SEARCH PROJECT"\
 from wordsearch import ws, DIM
 from wordsearch import output as sol
 
@@ -11,7 +11,7 @@ import sys
 
 pygame.init()
 
-SCALE = 40
+SCALE = 45
 plusfive = SCALE*(DIM+5)
 screen = pygame.display.set_mode((plusfive, plusfive))
 pygame.display.set_caption("Simple Pygame Example")
